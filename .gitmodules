@@ -1,0 +1,3 @@
+[submodule "Minecraft/vendor/glfw"]
+	path = Minecraft/vendor/glfw
+	url = https://github.com/HalloweenJack2606/glfw.git

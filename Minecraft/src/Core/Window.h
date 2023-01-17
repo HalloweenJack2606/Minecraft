@@ -20,8 +20,15 @@ namespace Minecraft
 		void SwapBuffers();
 		void PollEvents();
 
+		void Close() const { glfwSetWindowShouldClose(m_pGLFWWindow, true); }
+		void ToggleWireframe();
+
+		void* GetNativeWindow() const { return m_pGLFWWindow; }
+
 		const bool ShouldClose() const { return glfwWindowShouldClose(m_pGLFWWindow); }
 	private:
+		bool m_bWireframe = false;
+
 		GLFWwindow* m_pGLFWWindow = nullptr;
 		WindowProps m_WindowProps = WindowProps();
 	};

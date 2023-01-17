@@ -3,12 +3,14 @@
 namespace Minecraft
 {
 	std::vector<Block> Registry::s_Blocks;
-	std::vector<Material> Registry::s_Materials;
+	MaterialMap Registry::s_Materials;
+	TextureMap Registry::s_Textures;
 
 	void Registry::Init()
 	{
 		RegisterMaterials();
 		RegisterBlocks();
+		RegisterTextures();
 	}
 
 	void Registry::RegisterMaterials()
@@ -22,9 +24,16 @@ namespace Minecraft
 	{
 		Material air = Registry::Get<Material>("air");
 		Material grass = Registry::Get<Material>("grass");
-		//Material rock = Registry::Get<Material>("rock");
+		Material rock = Registry::Get<Material>("rock");
 
-		Registry::Register<Block>("air", Block(air));
+		Registry::Register<Block>("air", Block(air).SetTransparent());
 		Registry::Register<Block>("grass", Block(grass));
+	}
+
+	void Registry::RegisterTextures()
+	{
+		Registry::Register<TextureCreationInfo>("blocks", TextureCreationInfo{
+			.path = "assets/textures/blocks.png"
+			});
 	}
 }

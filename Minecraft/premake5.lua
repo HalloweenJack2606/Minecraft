@@ -18,7 +18,8 @@ project "Minecraft"
         "src",
         "vendor/glfw/include",
         "vendor/glew/include",
-        "vendor/glm"
+        "vendor/glm",
+        "vendor/stb_image"
     }
 
     libdirs

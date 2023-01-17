@@ -7,10 +7,12 @@ namespace Minecraft
 	class Chunk
 	{
 	public:
-		Chunk();
+		Chunk(vec3 offset);
 		~Chunk();
 
 		void Render();
+
+		void GetNeighbors(vec3 pos, std::vector<vec4>& neighbors);
 
 		bool BlockInBounds(vec3 pos);
 		u32 PositionToBlockID(const vec3 pos);
@@ -20,6 +22,6 @@ namespace Minecraft
 		vec3 position = vec3(0.0f); //@note: chunk position
 	private:
 		bool m_bDirty = true;
-		std::vector<u32> m_Blocks;
+		std::vector<s32> m_Blocks;
 	};
 }
